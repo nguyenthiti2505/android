@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<!-- <script type="text/javascript">
+		function Fibonacci(n){
+			console.log(Fibonacci(5));
+			if (n==1) {
+				return 0;
+			}
+			if (n==2 || n==3) {
+				return 1
+			}
+			console.log("fb("+n);
+			return Fibonacci(n-2)+ Fibonacci(n-1);
+		}
+	</script> -->
+
+	<script type="text/javascript">
+		var number=8;
+		var fib=[1,0];
+
+		for(var i=2; i<=number; i++){
+			fib[i]= fib[i-2] + fib[i-1];
+		}
+		console.log(fib[number]);
+	</script>
+
+</body>
+</html>

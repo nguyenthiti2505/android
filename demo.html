@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="text" id="number">
+	<button onclick="Fibonaci()" type="submit">Submit</button>
+	<script type="text/javascript">
+		function Fibonaci(){
+			var number = document.getElementById("number").value;
+			var a = 0;
+			var b = 1;
+			var c = 1;
+			if (number==2) {
+				return 1;
+			}
+			for (var i = 2; i <= number; i ++) {
+				a = b;
+				b = c;
+				c= a+b;
+			}
+			console.log(c);
+		}
+	</script>
+</body>
+</html>

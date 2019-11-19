@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<button id="paganate1" onclick="paganate1()">Paganate1</button>
+	<button id="paganate2" onclick="paganate2()">Paganate2</button>
+	<div id="input1"></div>
+	<div id="input2"></div>
+	<script type="text/javascript">
+		function paganate1(){
+			var a = document.getElementById("input1");
+			var number1= 1000/2;
+			document.getElementById("input1").innerHTML="";
+			for (var i = 0; i <number1; i++) {
+				var p =document.createElement("p");
+				p.innerText = "A" + i;
+				a.appendChild(p);
+			}
+		}
+		function paganate2(){
+			var a = document.getElementById("input2");
+			var number1= 1000/2;
+			document.getElementById("input2").innerHTML="";
+				for (var i = number1; i <1000; i++) {		
+					var p =document.createElement("p");
+					p.innerText = "A" + i;
+					a.appendChild(p);
+					}
+				}
+
+		function display($start, $end){
+			document.getElementById("input2").innerHTML="";
+				for (var i = number1; i <1000; i++) {		
+					var p =document.createElement("p");
+					p.innerText = "A" + i;
+					a.appendChild(p);
+					}
+				}
+	</script>
+</body>
+</html>
