@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <form id="form" onsubmit="return checkValidate()">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" id="name" required="Name is empty " >
+      </div>
+      <div class="form-group">
+        <label>JScore</label>
+        <input type="text" class="form-control" id="jscore">
+      </div>
+      <div class="form-group">
+        <label>AndroiScore</label>
+        <input type="text" class="form-control" id="androiScore">
+      </div>
+      <button type="submit" class="btn btn-primary" onclick="add()">Add Student</button>
+  </form>
+
+
+  <table class="table" id="array" align="center">
+  </table>
+  
+</body>
+<script type="text/javascript">
+    var el = document.getElementById('array');
+    var students = [
+            {
+                name: "nam",
+                jscore: 7,
+                androiScore: 8,
+                adverage: 7,
+                bonus: "Good"
+            },
+            {
+                name: "phuong",
+                jscore: 7,
+                androiScore: 8,
+                adverage: 7,
+                bonus: "Good"
+            }
+        ]
+        localStorage.setItem("student", JSON.stringify(students)); //--> LUU TAI LOCAL
+        let studentLocal =JSON.parse(localStorage.getItem("student"));
+        console.log(studentLocal);
+        display(studentLocal);
+
+        function display(hocsinh) {
+          var data = '';
+          for (var i = 0; i < hocsinh.length; i++) {
+              document.getElementById("array").innerHTML +=
+                    data += '<table class="table">'
+                    data += '<thead>';
+                    data += '<tr>';
+                    data += '<th></th>' ;
+                    data += '<th>'+students[i].name+'</th>';
+                    data += '<th>'+students[i].jscore+'</th>';
+                    data += '<th>'+students[i].androiScore+'</th>';
+                    data += '<th>'+students[i].adverage+'</th>';
+                    data += '<th>'+students[i].bonus+'</th>';
+                    data += '</th>'+ '<th>';
+                    data += '<a href="#"><button class="btn btn-danger" onclick="Dele(' + i + ')">Delete</button></a>' ;
+                    data += '</tr>';
+                    data += '</thead>';
+                    data += '</table>'
+                    data += '<tbody>';
+                    data +='</tbody>';
+          }
+          el.innerHTML = data;
+        }
+
+        function Dele(item) {
+          students.splice(item, 1);
+          localStorage.setItem('student', JSON.stringify(students));
+          alert("Do you want to delete");
+          display(students);
+        }
+
+        function add() {
+            var nameHS = document.getElementById("name").value;
+            var jscoreHS = parseInt(document.getElementById("jscore").value);
+            var androiScoreHS = parseInt(document.getElementById("androiScore").value);
+            var adverage = (jscoreHS+androiScoreHS)/2;
+            var bonus;
+            if (adverage>8) {
+              bonus="very good";
+            }
+            else if (adverage >7 && adverage<8) {
+              bonus = "Good";
+            }
+            else
+              bonus = "Normal";
+            students.push({name: nameHS, jscore: jscoreHS,androiScore:androiScoreHS, adverage:adverage, bonus:bonus });
+            localStorage.setItem("student", JSON.stringify(students)); //--> LUU TAI LOCAL
+            let addStudent =JSON.parse(localStorage.getItem("student"));
+            display(addStudent);
+        }  
+        function sort(students){
+            students.sort();
+            display(students);
+        } 
+
+        function checkValidate(){
+          var x = document.forms["form"]["name"].value;
+          if (x == " ") {
+            alert("Name must be filled out");
+            return false;
+          }
+        }
+  </script>
+</html>
